@@ -1,0 +1,317 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #1a1a18;
+  --warm: #f5f0e8;
+  --mid: #8c7b6b;
+  --accent: #c4693a;
+  --line: #d8cfc3;
+}
+
+body {
+  background: var(--warm);
+  color: var(--ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 18px;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main { flex: 1; }
+
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-home {
+  font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+}
+
+.nav-home:hover { color: var(--ink); }
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-links a:hover,
+.nav-links a.active { color: var(--accent); }
+
+/* Homepage */
+.home-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 5rem 2rem 2rem;
+}
+
+.home-wrap h1 {
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: normal;
+  line-height: 1.25;
+  margin-bottom: 1.5rem;
+}
+
+.home-wrap h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.home-intro {
+  font-size: 1.05rem;
+  color: #3d3730;
+  margin-bottom: 4rem;
+  max-width: 560px;
+}
+
+.home-section-label {
+  font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+}
+
+/* Portfolio grid */
+.portfolio-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem 5rem;
+}
+
+.portfolio-wrap h1 {
+  font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.card-thumb {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+  background: var(--line);
+}
+
+.card-info { padding: 0.6rem 0 0; }
+
+.card-title {
+  font-size: 0.95rem;
+  font-family: Georgia, serif;
+  font-weight: normal;
+}
+
+.card-year {
+  font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.75rem;
+  color: var(--mid);
+  margin-top: 0.15rem;
+}
+
+/* Selected works (homepage) */
+.selected-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.selected-grid .card-thumb {
+  aspect-ratio: 1/1;
+}
+
+.view-all {
+  font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 5rem;
+}
+
+.view-all:hover { text-decoration: underline; }
+
+/* Project page */
+.project-wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 2rem 5rem;
+}
+
+.back-link {
+  display: inline-block;
+  font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--mid);
+  text-decoration: none;
+  margin-bottom: 2rem;
+}
+
+.back-link:hover { color: var(--accent); }
+
+.project-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: normal;
+  line-height: 1.2;
+  margin-bottom: 0.4rem;
+}
+
+.project-meta {
+  font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.project-statement {
+  max-width: 640px;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #3d3730;
+  border-top: 1px solid var(--line);
+  padding-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+.project-statement p + p { margin-top: 1rem; }
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.image-grid img {
+  width: 100%;
+  display: block;
+}
+
+/* Text pages */
+.text-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 4rem 2rem 5rem;
+}
+
+.page-title {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: normal;
+  margin-bottom: 2.5rem;
+}
+
+.section-label {
+  font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 2.5rem 0 0.6rem;
+}
+
+.text-wrap p {
+  color: #3d3730;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.text-wrap p + p { margin-top: 0.75rem; }
+
+.text-wrap ul {
+  list-style: none;
+  color: #3d3730;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.text-wrap ul li + li { margin-top: 0.2rem; }
+
+.text-wrap a { color: var(--accent); text-decoration: none; }
+.text-wrap a:hover { text-decoration: underline; }
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 1.25rem 2rem;
+  font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.75rem;
+  color: var(--mid);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+footer a { color: var(--mid); text-decoration: none; }
+footer a:hover { color: var(--accent); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+  }
+  .nav-links { gap: 1.25rem; }
+  .grid,
+  .selected-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .portfolio-wrap { padding: 2rem 1.25rem 4rem; }
+  .image-grid { grid-template-columns: 1fr; }
+  .project-wrap { padding: 2rem 1.25rem 4rem; }
+  .text-wrap { padding: 2.5rem 1.25rem 4rem; }
+  .home-wrap { padding: 3rem 1.25rem 2rem; }
+  footer { padding: 1rem 1.25rem; }
+}
+
+@media (max-width: 480px) {
+  .grid,
+  .selected-grid { grid-template-columns: 1fr; }
+}
