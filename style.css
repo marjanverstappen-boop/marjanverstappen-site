@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -9,17 +11,39 @@
 }
 
 body {
-  background: var(--warm);
+  background-color: #2a2a28;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: var(--ink);
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 18px;
+  font-family: 'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
   line-height: 1.6;
   min-height: 100vh;
+  padding: 2rem;
+}
+
+.page-box {
+  background: #ffffff;
+  box-shadow: 0 16px 80px rgba(0, 0, 0, 0.35);
+  max-width: 1300px;
+  margin: 0 auto;
+  min-height: calc(100vh - 4rem);
   display: flex;
   flex-direction: column;
 }
 
-main { flex: 1; }
+.page-box main { flex: 1; }
+
+/* Text pages — no background image, clean cream layout */
+body.page-simple {
+  background: var(--warm);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+body.page-simple main { flex: 1; }
 
 /* Navigation */
 nav {
@@ -135,7 +159,7 @@ nav {
 
 .card-title {
   font-size: 0.95rem;
-  font-family: Georgia, serif;
+  font-family: 'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
   font-weight: normal;
 }
 
@@ -229,6 +253,72 @@ nav {
   display: block;
 }
 
+/* About hero photo */
+.about-photo {
+  width: 100%;
+  display: block;
+  margin-bottom: 2.5rem;
+}
+
+/* Profile photo (CV) */
+.profile-photo {
+  width: 180px;
+  display: block;
+  margin-bottom: 2rem;
+}
+
+/* Contact form */
+.form-field {
+  margin-bottom: 1.25rem;
+}
+
+.form-field label {
+  display: block;
+  font-family: 'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: transparent;
+  padding: 0.6rem 0.75rem;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 1rem;
+  color: var(--ink);
+  outline: none;
+}
+
+.form-field input:focus,
+.form-field textarea:focus { border-color: var(--ink); }
+
+.form-field textarea {
+  height: 8rem;
+  resize: vertical;
+}
+
+.form-submit {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: var(--warm);
+  border: none;
+  padding: 0.75rem 2rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.form-submit:hover { background: var(--accent); }
+
 /* Text pages */
 .text-wrap {
   max-width: 640px;
@@ -288,6 +378,81 @@ footer {
 
 footer a { color: var(--mid); text-decoration: none; }
 footer a:hover { color: var(--accent); }
+
+/* Lightbox */
+#lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 26, 24, 0.96);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+#lightbox.active { display: flex; }
+
+.lb-inner {
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.lb-img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  display: block;
+}
+
+.lb-caption {
+  color: var(--warm);
+  font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-align: center;
+  opacity: 0.85;
+  margin: 0;
+}
+
+.lb-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--warm);
+  font-size: 2.2rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.25rem;
+  opacity: 0.7;
+}
+
+.lb-prev,
+.lb-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--warm);
+  font-size: 3.5rem;
+  cursor: pointer;
+  padding: 1rem;
+  line-height: 1;
+  opacity: 0.7;
+}
+
+.lb-prev { left: 0.5rem; }
+.lb-next { right: 0.5rem; }
+
+.lb-close:hover,
+.lb-prev:hover,
+.lb-next:hover { opacity: 1; color: var(--accent); }
 
 /* Responsive */
 @media (max-width: 768px) {

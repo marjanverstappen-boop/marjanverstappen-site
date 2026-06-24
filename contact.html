@@ -6,7 +6,7 @@
   <title>Contact — Marjan Verstappen</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="page-simple">
   <nav>
     <a href="index.html" class="nav-home">Marjan Verstappen</a>
     <div class="nav-links">
@@ -18,10 +18,30 @@
   </nav>
   <main>
     <div class="text-wrap">
+      <img src="images/contact/2020-06-15_04_58_43_1.jpg" alt="Marjan Verstappen" class="about-photo">
       <h1 class="page-title">Contact</h1>
-      <p><a href="mailto:marjan.verstappen@gmail.com">marjan.verstappen@gmail.com</a></p>
-      <br>
-      <p>Based in Toronto/Tkaronto, Ontario.</p>
+      <p>Based in Toronto/Tkaronto, Ontario.<br>
+      <a href="mailto:marjan.verstappen@gmail.com">marjan.verstappen@gmail.com</a></p>
+
+      <form class="contact-form" action="mailto:marjan.verstappen@gmail.com" method="post" enctype="text/plain" style="margin-top: 2rem;">
+        <div class="form-field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-field">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject">
+        </div>
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send</button>
+      </form>
     </div>
   </main>
   <footer>
