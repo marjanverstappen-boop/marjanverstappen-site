@@ -53,6 +53,60 @@
     @media (max-width: 480px) {
       .gallery { columns: 1; padding: 0.75rem; }
     }
+
+    .gallery-item-placeholder {
+      break-inside: avoid;
+      margin-bottom: 0.75rem;
+      position: relative;
+      display: block;
+      text-decoration: none;
+    }
+    .gallery-item-placeholder::before {
+      content: '';
+      display: block;
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: #2a2a28;
+    }
+    .gallery-item-placeholder:hover .gallery-item-label {
+      opacity: 1;
+    }
+
+    /* Homepage header layout */
+    nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    nav .nav-home { display: none; }
+    nav .nav-links { grid-column: 2; }
+
+    .home-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      padding: 2.5rem 2rem 3rem;
+    }
+    .home-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.15;
+    }
+    .home-header .home-intro {
+      margin-bottom: 0;
+      line-height: 2.2;
+      letter-spacing: 0.02em;
+      max-width: 85%;
+    }
+
+    @media (max-width: 768px) {
+      nav { display: flex; }
+      nav .nav-home { display: block; }
+      .home-header { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body style="background-image: url('images/folding-cyanotypes/compression_2024.jpg');">
@@ -67,229 +121,216 @@
     </div>
   </nav>
   <main>
-    <div class="home-wrap">
-      <h1>Painter, sculptor, filmmaker — but for me, <em>the disciplines blur.</em></h1>
-      <p class="home-intro">What holds it all together is industrial materials — cyanotype, asphalt, polypropylene rope — and a question I keep asking: what kind of stories can be told about these materials, and what do they tell us about ourselves?</p>
+    <div class="home-header">
+      <div class="home-name">Marjan Verstappen</div>
+      <p class="home-intro">Marjan Verstappen is a visual artist, filmmaker and community art educator. Her practice encapsulates a folding of time, place, and material. She seeks relationships with communities, materials and landscapes that are embodied, honest and hopeful of repair.</p>
     </div>
     <div class="gallery">
-
-      <!-- folding — cyanotypes -->
       <a href="projects/folding-cyanotypes.html" class="gallery-item">
-        <img src="images/folding-cyanotypes/another sky_2024.jpg" alt="folding — cyanotypes" loading="lazy">
-        <span class="gallery-item-label">folding — cyanotypes</span>
-      </a>
-      <a href="projects/folding-cyanotypes.html" class="gallery-item">
-        <img src="images/folding-cyanotypes/new sky_2024.jpg" alt="folding — cyanotypes" loading="lazy">
-        <span class="gallery-item-label">folding — cyanotypes</span>
-      </a>
-      <a href="projects/folding-cyanotypes.html" class="gallery-item">
-        <img src="images/folding-cyanotypes/compression_2024.jpg" alt="folding — cyanotypes" loading="lazy">
-        <span class="gallery-item-label">folding — cyanotypes</span>
-      </a>
-      <a href="projects/folding-cyanotypes.html" class="gallery-item">
-        <img src="images/folding-cyanotypes/Burning Iceburg.jpg" alt="folding — cyanotypes" loading="lazy">
-        <span class="gallery-item-label">folding — cyanotypes</span>
-      </a>
-      <a href="projects/folding-cyanotypes.html" class="gallery-item">
-        <img src="images/folding-cyanotypes/Unknown Sky.jpg" alt="folding — cyanotypes" loading="lazy">
-        <span class="gallery-item-label">folding — cyanotypes</span>
-      </a>
-
-      <!-- know the ways -->
-      <a href="projects/know-the-ways.html" class="gallery-item">
-        <img src="images/know-the-ways/_MG_8323.jpg" alt="know the ways" loading="lazy">
-        <span class="gallery-item-label">know the ways</span>
+        <img src="images/folding-cyanotypes/another sky_2024.jpg" alt="Fold, 2023" loading="lazy">
+        <span class="gallery-item-label">Fold, 2023</span>
       </a>
       <a href="projects/know-the-ways.html" class="gallery-item">
-        <img src="images/know-the-ways/_MG_8379.jpg" alt="know the ways" loading="lazy">
-        <span class="gallery-item-label">know the ways</span>
+        <img src="images/know-the-ways/_MG_8323.jpg" alt="Bright Night, Florence Martin, 1955, 2020" loading="lazy">
+        <span class="gallery-item-label">Bright Night, Florence Martin, 1955, 2020</span>
+      </a>
+      <a href="projects/climate.html" class="gallery-item">
+        <img src="images/climate/_MG_7601.jpg" alt="Climate, 2018" loading="lazy">
+        <span class="gallery-item-label">Climate, 2018</span>
+      </a>
+      <a href="projects/folding-cyanotypes.html" class="gallery-item">
+        <img src="images/folding-cyanotypes/new sky_2024.jpg" alt="Tomorrow, 2024" loading="lazy">
+        <span class="gallery-item-label">Tomorrow, 2024</span>
+      </a>
+      <a href="projects/folding-cyanotypes.html" class="gallery-item">
+        <img src="images/folding-cyanotypes/compression_2024.jpg" alt="Fold vi, 2024" loading="lazy">
+        <span class="gallery-item-label">Fold vi, 2024</span>
+      </a>
+      <a href="projects/folding-cyanotypes.html" class="gallery-item">
+        <img src="images/folding-cyanotypes/Burning Iceburg.jpg" alt="Burning Iceberg, 2024" loading="lazy">
+        <span class="gallery-item-label">Burning Iceberg, 2024</span>
+      </a>
+      <a href="projects/folding-cyanotypes.html" class="gallery-item">
+        <img src="images/folding-cyanotypes/Unknown Sky.jpg" alt="Unknown sky ii, 2024" loading="lazy">
+        <span class="gallery-item-label">Unknown sky ii, 2024</span>
+      </a>
+      <a href="projects/atlas-of-nowhere.html" class="gallery-item">
+        <img src="images/atlas-of-nowhere/_MG_7933.jpg" alt="Mesopotamia Station, H.K. Gordon, 1863, 2019" loading="lazy">
+        <span class="gallery-item-label">Mesopotamia Station, H.K. Gordon, 1863, 2019</span>
       </a>
       <a href="projects/know-the-ways.html" class="gallery-item">
-        <img src="images/know-the-ways/7_know_the_ways.jpg" alt="know the ways" loading="lazy">
-        <span class="gallery-item-label">know the ways</span>
+        <img src="images/know-the-ways/_MG_8379.jpg" alt="We can't say that we never tried, 2020" loading="lazy">
+        <span class="gallery-item-label">We can't say that we never tried, 2020</span>
       </a>
       <a href="projects/know-the-ways.html" class="gallery-item">
-        <img src="images/know-the-ways/_MG_8425.jpg" alt="know the ways" loading="lazy">
-        <span class="gallery-item-label">know the ways</span>
+        <img src="images/know-the-ways/7_know_the_ways.jpg" alt="Know the Ways, 2020" loading="lazy">
+        <span class="gallery-item-label">Know the Ways, 2020</span>
       </a>
-
-      <!-- atlas of nowhere -->
-      <a href="projects/atlas-of-nowhere.html" class="gallery-item">
-        <img src="images/atlas-of-nowhere/_MG_7933.jpg" alt="atlas of nowhere" loading="lazy">
-        <span class="gallery-item-label">atlas of nowhere</span>
+      <a href="projects/know-the-ways.html" class="gallery-item">
+        <img src="images/know-the-ways/_MG_8425.jpg" alt="Starry Sky, Florence Martin, 1946, 2020" loading="lazy">
+        <span class="gallery-item-label">Starry Sky, Florence Martin, 1946, 2020</span>
       </a>
       <a href="projects/atlas-of-nowhere.html" class="gallery-item">
-        <img src="images/atlas-of-nowhere/Blue_flower.jpg" alt="atlas of nowhere" loading="lazy">
-        <span class="gallery-item-label">atlas of nowhere</span>
+        <img src="images/atlas-of-nowhere/Blue_flower.jpg" alt="Flower of Neptune, 2018" loading="lazy">
+        <span class="gallery-item-label">Flower of Neptune, 2018</span>
       </a>
       <a href="projects/atlas-of-nowhere.html" class="gallery-item">
-        <img src="images/atlas-of-nowhere/06_neptune.jpg" alt="atlas of nowhere" loading="lazy">
-        <span class="gallery-item-label">atlas of nowhere</span>
+        <img src="images/atlas-of-nowhere/06_neptune.jpg" alt="Dried sample of flower of Neptune, found in 1864 archive, 2019" loading="lazy">
+        <span class="gallery-item-label">Dried sample of flower of Neptune, found in 1864 archive, 2019</span>
       </a>
       <a href="projects/atlas-of-nowhere.html" class="gallery-item">
-        <img src="images/atlas-of-nowhere/IMG_3703.jpg" alt="atlas of nowhere" loading="lazy">
-        <span class="gallery-item-label">atlas of nowhere</span>
+        <img src="images/atlas-of-nowhere/IMG_3703.jpg" alt="Photo of flower of Neptune found in camera of missing hiker, 2016, 2019" loading="lazy">
+        <span class="gallery-item-label">Photo of flower of Neptune found in camera of missing hiker, 2016, 2019</span>
       </a>
       <a href="projects/atlas-of-nowhere.html" class="gallery-item">
-        <img src="images/atlas-of-nowhere/_MG_7951.jpg" alt="atlas of nowhere" loading="lazy">
-        <span class="gallery-item-label">atlas of nowhere</span>
-      </a>
-
-      <!-- the nylon fly -->
-      <a href="projects/the-nylon-fly.html" class="gallery-item">
-        <img src="images/the-nylon-fly/_DSC96712.jpg" alt="the nylon fly" loading="lazy">
-        <span class="gallery-item-label">the nylon fly</span>
+        <img src="images/atlas-of-nowhere/_MG_7951.jpg" alt="Mesopotamia Station, H.K. Gordon, 1863, 2019" loading="lazy">
+        <span class="gallery-item-label">Mesopotamia Station, H.K. Gordon, 1863, 2019</span>
       </a>
       <a href="projects/the-nylon-fly.html" class="gallery-item">
-        <img src="images/the-nylon-fly/_MG_7543.jpg" alt="the nylon fly" loading="lazy">
-        <span class="gallery-item-label">the nylon fly</span>
-      </a>
-      <a href="projects/the-nylon-fly.html" class="gallery-item">
-        <img src="images/the-nylon-fly/Nylon_Fly_text1.jpg" alt="the nylon fly" loading="lazy">
-        <span class="gallery-item-label">the nylon fly</span>
-      </a>
-      <a href="projects/the-nylon-fly.html" class="gallery-item">
-        <img src="images/the-nylon-fly/_DSC9748-copy.jpg" alt="the nylon fly" loading="lazy">
-        <span class="gallery-item-label">the nylon fly</span>
-      </a>
-      <a href="projects/the-nylon-fly.html" class="gallery-item">
-        <img src="images/the-nylon-fly/_MG_7647.jpg" alt="the nylon fly" loading="lazy">
-        <span class="gallery-item-label">the nylon fly</span>
-      </a>
-
-      <!-- climate -->
-      <a href="projects/climate.html" class="gallery-item">
-        <img src="images/climate/_MG_7601.jpg" alt="climate" loading="lazy">
-        <span class="gallery-item-label">climate</span>
-      </a>
-      <a href="projects/climate.html" class="gallery-item">
-        <img src="images/climate/_MG_7604.jpg" alt="climate" loading="lazy">
-        <span class="gallery-item-label">climate</span>
-      </a>
-      <a href="projects/climate.html" class="gallery-item">
-        <img src="images/climate/14_cyanotype.jpg" alt="climate" loading="lazy">
-        <span class="gallery-item-label">climate</span>
-      </a>
-      <a href="projects/climate.html" class="gallery-item">
-        <img src="images/climate/_MG_7882.jpg" alt="climate" loading="lazy">
-        <span class="gallery-item-label">climate</span>
-      </a>
-
-      <!-- river credits -->
-      <a href="projects/river-credits.html" class="gallery-item">
-        <img src="images/river-credits/_MG_7092.jpg" alt="river credits" loading="lazy">
-        <span class="gallery-item-label">river credits</span>
+        <img src="images/the-nylon-fly/_DSC9758-copy.jpg" alt="The Nylon Fly, 2018" loading="lazy">
+        <span class="gallery-item-label">The Nylon Fly, 2018</span>
       </a>
       <a href="projects/river-credits.html" class="gallery-item">
-        <img src="images/river-credits/Wild_Rose_by_Marjan_Verstappen.jpg" alt="river credits" loading="lazy">
-        <span class="gallery-item-label">river credits</span>
+        <img src="images/river-credits/09MV2018_QueenAnnesLace.jpg" alt="Queen Anne's Lace (detail), 2018" loading="lazy">
+        <span class="gallery-item-label">Queen Anne's Lace (detail), 2018</span>
       </a>
-      <a href="projects/river-credits.html" class="gallery-item">
-        <img src="images/river-credits/01MV2018Goldenrod.jpg" alt="river credits" loading="lazy">
-        <span class="gallery-item-label">river credits</span>
-      </a>
-      <a href="projects/river-credits.html" class="gallery-item">
-        <img src="images/river-credits/09MV2018_QueenAnnesLace.jpg" alt="river credits" loading="lazy">
-        <span class="gallery-item-label">river credits</span>
-      </a>
-
-      <!-- graftings -->
-      <a href="projects/graftings.html" class="gallery-item">
-        <img src="images/graftings/11_Sketch.jpg" alt="graftings" loading="lazy">
-        <span class="gallery-item-label">graftings</span>
+      <a href="projects/the-nylon-fly.html" class="gallery-item">
+        <img src="images/the-nylon-fly/_MG_7543.jpg" alt="The Nylon Fly, 2018" loading="lazy">
+        <span class="gallery-item-label">The Nylon Fly, 2018</span>
       </a>
       <a href="projects/graftings.html" class="gallery-item">
-        <img src="images/graftings/12_Sketch.jpg" alt="graftings" loading="lazy">
-        <span class="gallery-item-label">graftings</span>
+        <img src="images/graftings/12_Sketch.jpg" alt="Alpine lichen (improvised), 2018" loading="lazy">
+        <span class="gallery-item-label">Alpine lichen (improvised), 2018</span>
+      </a>
+      <a href="projects/the-nylon-fly.html" class="gallery-item">
+        <img src="images/the-nylon-fly/Nylon_Fly_text1.jpg" alt="The Nylon Fly, 2018" loading="lazy">
+        <span class="gallery-item-label">The Nylon Fly, 2018</span>
+      </a>
+      <a href="projects/the-nylon-fly.html" class="gallery-item">
+        <img src="images/the-nylon-fly/_DSC9748-copy.jpg" alt="Nylon Fly, 2018" loading="lazy">
+        <span class="gallery-item-label">Nylon Fly, 2018</span>
+      </a>
+      <a href="projects/the-nylon-fly.html" class="gallery-item">
+        <img src="images/the-nylon-fly/_MG_7647.jpg" alt="Nylon Fly, detail, 2018" loading="lazy">
+        <span class="gallery-item-label">Nylon Fly, detail, 2018</span>
       </a>
       <a href="projects/graftings.html" class="gallery-item">
-        <img src="images/graftings/13_Sketch.jpg" alt="graftings" loading="lazy">
-        <span class="gallery-item-label">graftings</span>
+        <img src="images/graftings/11_Sketch.jpg" alt="Alpine lichen (improvised), 2018" loading="lazy">
+        <span class="gallery-item-label">Alpine lichen (improvised), 2018</span>
       </a>
-
-      <!-- still life with packaging -->
-      <a href="projects/still-life-with-packaging.html" class="gallery-item">
-        <img src="images/still-life-with-packaging/_TH_9531.jpg" alt="still life with packaging" loading="lazy">
-        <span class="gallery-item-label">still life with packaging</span>
+      <a href="projects/graftings.html" class="gallery-item">
+        <img src="images/graftings/13_Sketch.jpg" alt="Alpine lichen (improvised), 2018" loading="lazy">
+        <span class="gallery-item-label">Alpine lichen (improvised), 2018</span>
       </a>
-      <a href="projects/still-life-with-packaging.html" class="gallery-item">
-        <img src="images/still-life-with-packaging/2_redonion_MV.jpg" alt="still life with packaging" loading="lazy">
-        <span class="gallery-item-label">still life with packaging</span>
+      <a href="projects/river-credits.html" class="gallery-item">
+        <img src="images/river-credits/_MG_7092.jpg" alt="Queen Anne's Lace, 2018" loading="lazy">
+        <span class="gallery-item-label">Queen Anne's Lace, 2018</span>
       </a>
-      <a href="projects/still-life-with-packaging.html" class="gallery-item">
-        <img src="images/still-life-with-packaging/_TH_9541.jpg" alt="still life with packaging" loading="lazy">
-        <span class="gallery-item-label">still life with packaging</span>
+      <a href="projects/river-credits.html" class="gallery-item">
+        <img src="images/river-credits/Wild_Rose_by_Marjan_Verstappen.jpg" alt="Dog Rose, 2018" loading="lazy">
+        <span class="gallery-item-label">Dog Rose, 2018</span>
       </a>
       <a href="projects/still-life-with-packaging.html" class="gallery-item">
-        <img src="images/still-life-with-packaging/3_whiteonion_MV.jpg" alt="still life with packaging" loading="lazy">
-        <span class="gallery-item-label">still life with packaging</span>
+        <img src="images/still-life-with-packaging/2_redonion_MV.jpg" alt="Red Onions, 2017" loading="lazy">
+        <span class="gallery-item-label">Red Onions, 2017</span>
       </a>
-
-      <!-- you saw nothing -->
+      <a href="projects/river-credits.html" class="gallery-item">
+        <img src="images/river-credits/01MV2018Goldenrod.jpg" alt="Goldenrod, 2018" loading="lazy">
+        <span class="gallery-item-label">Goldenrod, 2018</span>
+      </a>
+      <a href="projects/still-life-with-packaging.html" class="gallery-item">
+        <img src="images/still-life-with-packaging/3_whiteonion_MV.jpg" alt="Onions, 2017" loading="lazy">
+        <span class="gallery-item-label">Onions, 2017</span>
+      </a>
+      <a href="projects/climate.html" class="gallery-item">
+        <img src="images/climate/_MG_7604.jpg" alt="Climate Image, 2018" loading="lazy">
+        <span class="gallery-item-label">Climate Image, 2018</span>
+      </a>
+      <a href="projects/climate.html" class="gallery-item">
+        <img src="images/climate/14_cyanotype.jpg" alt="What falls through, 2019" loading="lazy">
+        <span class="gallery-item-label">What falls through, 2019</span>
+      </a>
       <a href="projects/you-saw-nothing.html" class="gallery-item">
-        <img src="images/you-saw-nothing/20170123_005819.jpg" alt="you saw nothing" loading="lazy">
-        <span class="gallery-item-label">you saw nothing</span>
-      </a>
-      <a href="projects/you-saw-nothing.html" class="gallery-item">
-        <img src="images/you-saw-nothing/31901614903_90bc703ded_z.jpg" alt="you saw nothing" loading="lazy">
-        <span class="gallery-item-label">you saw nothing</span>
-      </a>
-      <a href="projects/you-saw-nothing.html" class="gallery-item">
-        <img src="images/you-saw-nothing/32591994401_18dac78007_z.jpg" alt="you saw nothing" loading="lazy">
-        <span class="gallery-item-label">you saw nothing</span>
-      </a>
-
-      <!-- many long moments -->
-      <a href="projects/many-long-moments.html" class="gallery-item">
-        <img src="images/many-long-moments/_MG_5848_copy.jpg" alt="many long moments" loading="lazy">
-        <span class="gallery-item-label">many long moments</span>
+        <img src="images/you-saw-nothing/32591994401_18dac78007_z.jpg" alt="You Saw Nothing, 2018" loading="lazy">
+        <span class="gallery-item-label">You Saw Nothing, 2018</span>
       </a>
       <a href="projects/many-long-moments.html" class="gallery-item">
-        <img src="images/many-long-moments/_MG_5874_copy.jpg" alt="many long moments" loading="lazy">
-        <span class="gallery-item-label">many long moments</span>
+        <img src="images/many-long-moments/_MG_5848_copy.jpg" alt="Cafe, 2016" loading="lazy">
+        <span class="gallery-item-label">Cafe, 2016</span>
+      </a>
+      <a href="projects/climate.html" class="gallery-item">
+        <img src="images/climate/_MG_7882.jpg" alt="What falls through, 2019" loading="lazy">
+        <span class="gallery-item-label">What falls through, 2019</span>
+      </a>
+      <a href="projects/still-life-with-packaging.html" class="gallery-item">
+        <img src="images/still-life-with-packaging/_TH_9531.jpg" alt="Purple Cabbage, 2017" loading="lazy">
+        <span class="gallery-item-label">Purple Cabbage, 2017</span>
+      </a>
+      <a href="projects/still-life-with-packaging.html" class="gallery-item">
+        <img src="images/still-life-with-packaging/_TH_9541.jpg" alt="Rutabaga, 2017" loading="lazy">
+        <span class="gallery-item-label">Rutabaga, 2017</span>
+      </a>
+      <a href="projects/you-saw-nothing.html" class="gallery-item">
+        <img src="images/you-saw-nothing/20170123_005819.jpg" alt="Luminescent Seashells, 2018" loading="lazy">
+        <span class="gallery-item-label">Luminescent Seashells, 2018</span>
+      </a>
+      <a href="projects/you-saw-nothing.html" class="gallery-item">
+        <img src="images/you-saw-nothing/31901614903_90bc703ded_z.jpg" alt="You Saw Nothing, 2018" loading="lazy">
+        <span class="gallery-item-label">You Saw Nothing, 2018</span>
       </a>
       <a href="projects/many-long-moments.html" class="gallery-item">
-        <img src="images/many-long-moments/5_Verstappen.jpg" alt="many long moments" loading="lazy">
-        <span class="gallery-item-label">many long moments</span>
+        <img src="images/many-long-moments/_MG_5874_copy.jpg" alt="Patio, 2016" loading="lazy">
+        <span class="gallery-item-label">Patio, 2016</span>
+      </a>
+      <a href="projects/many-long-moments.html" class="gallery-item">
+        <img src="images/many-long-moments/5_Verstappen.jpg" alt="Balcony, 2016" loading="lazy">
+        <span class="gallery-item-label">Balcony, 2016</span>
+      </a>
+      <a href="projects/pollinate-illuminate.html" class="gallery-item">
+        <img src="images/pollinate-illuminate/_MG_5583.jpg" alt="Blossom, 2016" loading="lazy">
+        <span class="gallery-item-label">Blossom, 2016</span>
+      </a>
+      <a href="projects/pollinate-illuminate.html" class="gallery-item">
+        <img src="images/pollinate-illuminate/1MV.jpg" alt="Dandelion, 2014" loading="lazy">
+        <span class="gallery-item-label">Dandelion, 2014</span>
+      </a>
+      <a href="projects/pollinate-illuminate.html" class="gallery-item">
+        <img src="images/pollinate-illuminate/43042-8487164-P1010493.jpg" alt="Pollinate / Illuminate, installation, 2014" loading="lazy">
+        <span class="gallery-item-label">Pollinate / Illuminate, installation, 2014</span>
+      </a>
+      <a href="projects/pollinate-illuminate.html" class="gallery-item">
+        <img src="images/pollinate-illuminate/MV_5.jpg" alt="Dandelion, 2015" loading="lazy">
+        <span class="gallery-item-label">Dandelion, 2015</span>
+      </a>
+      <a href="projects/fung-wah-onboard-service.html" class="gallery-item">
+        <img src="images/fung-wah-onboard-service/COFFEE_DEER.jpg" alt="Menu from Fung Wah Onboard Service, 2016" loading="lazy">
+        <span class="gallery-item-label">Menu from Fung Wah Onboard Service, 2016</span>
+      </a>
+      <a href="projects/fung-wah-onboard-service.html" class="gallery-item">
+        <img src="images/fung-wah-onboard-service/stewardess.jpg" alt="Fung Wah Onboard Service, 2016" loading="lazy">
+        <span class="gallery-item-label">Fung Wah Onboard Service, 2016</span>
+      </a>
+      <a href="projects/fung-wah-onboard-service.html" class="gallery-item">
+        <img src="images/fung-wah-onboard-service/IMG-20160312-WA0000.jpg" alt="Meal boxes from Fung Wah Onboard Service, 2016" loading="lazy">
+        <span class="gallery-item-label">Meal boxes from Fung Wah Onboard Service, 2016</span>
       </a>
 
-      <!-- pollinate/illuminate -->
-      <a href="projects/pollinate-illuminate.html" class="gallery-item">
-        <img src="images/pollinate-illuminate/_MG_5583.jpg" alt="pollinate/illuminate" loading="lazy">
-        <span class="gallery-item-label">pollinate/illuminate</span>
-      </a>
-      <a href="projects/pollinate-illuminate.html" class="gallery-item">
-        <img src="images/pollinate-illuminate/1MV.jpg" alt="pollinate/illuminate" loading="lazy">
-        <span class="gallery-item-label">pollinate/illuminate</span>
-      </a>
-      <a href="projects/pollinate-illuminate.html" class="gallery-item">
-        <img src="images/pollinate-illuminate/43042-8487164-P1010493.jpg" alt="pollinate/illuminate" loading="lazy">
-        <span class="gallery-item-label">pollinate/illuminate</span>
-      </a>
-      <a href="projects/pollinate-illuminate.html" class="gallery-item">
-        <img src="images/pollinate-illuminate/MV_5.jpg" alt="pollinate/illuminate" loading="lazy">
-        <span class="gallery-item-label">pollinate/illuminate</span>
+      <a href="projects/dominion.html" class="gallery-item-placeholder">
+        <span class="gallery-item-label">Dominion — Film</span>
       </a>
 
-      <!-- fung wah onboard service -->
-      <a href="projects/fung-wah-onboard-service.html" class="gallery-item">
-        <img src="images/fung-wah-onboard-service/COFFEE_DEER.jpg" alt="fung wah onboard service" loading="lazy">
-        <span class="gallery-item-label">fung wah onboard service</span>
+      <a href="projects/dominion.html" class="gallery-item-placeholder">
+        <span class="gallery-item-label">Dominion — Film</span>
       </a>
-      <a href="projects/fung-wah-onboard-service.html" class="gallery-item">
-        <img src="images/fung-wah-onboard-service/stewardess.jpg" alt="fung wah onboard service" loading="lazy">
-        <span class="gallery-item-label">fung wah onboard service</span>
-      </a>
-      <a href="projects/fung-wah-onboard-service.html" class="gallery-item">
-        <img src="images/fung-wah-onboard-service/IMG-20160312-WA0000.jpg" alt="fung wah onboard service" loading="lazy">
-        <span class="gallery-item-label">fung wah onboard service</span>
+
+      <a href="projects/dominion.html" class="gallery-item-placeholder">
+        <span class="gallery-item-label">Dominion — Film</span>
       </a>
 
     </div>
   </main>
   <footer>
-    <span>© Marjan Verstappen 2025</span>
-    <a href="mailto:marjan.verstappen@gmail.com">marjan.verstappen@gmail.com</a>
+    <span>© Marjan Verstappen 2026</span>
   </footer>
   </div>
 </body>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery Editor — Marjan Verstappen</title>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+      background: #f5f0e8;
+      color: #1a1a18;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #1a1a18;
+      color: #f5f0e8;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    #status {
+      font-size: 0.8rem;
+      color: #c4693a;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    #status.show { opacity: 1; }
+
+    .save-btn {
+      background: #c4693a;
+      color: white;
+      border: none;
+      padding: 0.55rem 1.4rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .save-btn:hover { background: #a85730; }
+    .save-btn:disabled { background: #8c7b6b; cursor: default; }
+
+    main { padding: 1.5rem 2rem 3rem; }
+
+    .hint {
+      font-size: 0.8rem;
+      color: #8c7b6b;
+      margin-bottom: 1.5rem;
+    }
+
+    #grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.6rem;
+    }
+
+    .card {
+      background: white;
+      cursor: grab;
+      user-select: none;
+    }
+    .card:active { cursor: grabbing; }
+    .card.sortable-ghost { opacity: 0.25; }
+    .card.sortable-chosen { box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
+
+    .card img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-label {
+      padding: 0.35rem 0.5rem;
+      font-size: 0.62rem;
+      color: #8c7b6b;
+      line-height: 1.3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    @media (max-width: 1200px) { #grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 900px)  { #grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 580px)  { #grid { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Gallery Editor</h1>
+  <div class="header-right">
+    <span id="status">Saved!</span>
+    <button class="save-btn" id="save-btn" onclick="save()">Save Order</button>
+  </div>
+</header>
+
+<main>
+  <p class="hint">Drag images into any order you like. Click Save Order — changes go live on the homepage immediately.</p>
+  <div id="grid"></div>
+</main>
+
+<script>
+  let items = [];
+
+  async function load() {
+    const res = await fetch('/api/gallery');
+    items = await res.json();
+    render();
+  }
+
+  function render() {
+    const grid = document.getElementById('grid');
+    grid.innerHTML = items.map(item => `
+      <div class="card">
+        <img src="${item.src}" alt="${item.alt}" loading="lazy">
+        <div class="card-label">${item.label}</div>
+      </div>
+    `).join('');
+
+    new Sortable(grid, {
+      animation: 150,
+      ghostClass: 'sortable-ghost',
+      chosenClass: 'sortable-chosen',
+      onEnd(evt) {
+        const moved = items.splice(evt.oldIndex, 1)[0];
+        items.splice(evt.newIndex, 0, moved);
+      }
+    });
+  }
+
+  async function save() {
+    const btn = document.getElementById('save-btn');
+    btn.disabled = true;
+    btn.textContent = 'Saving…';
+    try {
+      const res = await fetch('/api/gallery', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(items),
+      });
+      if (res.ok) {
+        const s = document.getElementById('status');
+        s.classList.add('show');
+        setTimeout(() => s.classList.remove('show'), 2000);
+      }
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Save Order';
+    }
+  }
+
+  load();
+</script>
+
+</body>
+</html>

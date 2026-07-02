@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700;800&display=swap');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -37,13 +37,136 @@ body {
 
 /* Text pages — no background image, clean cream layout */
 body.page-simple {
-  background: var(--warm);
+  background: #ffffff;
   padding: 0;
   display: flex;
   flex-direction: column;
 }
 
 body.page-simple main { flex: 1; }
+
+/* Dark pages — full-bleed background image, light text */
+body.page-dark {
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: var(--warm);
+  position: relative;
+}
+
+body.page-dark::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 20, 18, 0.25);
+  z-index: 0;
+  pointer-events: none;
+}
+
+body.page-dark nav,
+body.page-dark main,
+body.page-dark footer {
+  position: relative;
+  z-index: 1;
+}
+
+body.page-dark main { flex: 1; }
+
+body.page-dark nav {
+  border-bottom-color: rgba(245, 240, 232, 0.2);
+}
+
+body.page-dark .nav-home,
+body.page-dark .nav-links a {
+  color: var(--warm);
+}
+
+body.page-dark .nav-home:hover { color: var(--warm); opacity: 0.7; }
+body.page-dark .nav-links a:hover { color: var(--warm); opacity: 0.7; }
+body.page-dark .nav-links a.active { color: var(--warm); opacity: 1; }
+
+body.page-dark .page-title { color: var(--warm); }
+
+body.page-dark .form-field label {
+  color: rgba(245, 240, 232, 0.65);
+}
+
+body.page-dark .form-field input,
+body.page-dark .form-field textarea {
+  border-color: rgba(245, 240, 232, 0.65);
+  color: var(--warm);
+}
+
+body.page-dark .form-field input::placeholder,
+body.page-dark .form-field textarea::placeholder {
+  color: rgba(245, 240, 232, 0.25);
+}
+
+body.page-dark .form-field input:focus,
+body.page-dark .form-field textarea:focus {
+  border-color: rgba(245, 240, 232, 0.8);
+}
+
+body.page-dark .form-submit {
+  background: var(--warm);
+  color: var(--ink);
+}
+
+body.page-dark .form-submit:hover { background: #ffffff; }
+
+body.page-dark footer {
+  border-top-color: rgba(245, 240, 232, 0.2);
+  color: rgba(245, 240, 232, 0.4);
+}
+
+body.page-dark footer a { color: rgba(245, 240, 232, 0.4); }
+body.page-dark footer a:hover { color: var(--warm); }
+
+body.page-dark .project-title { color: var(--warm); }
+body.page-dark .project-meta { color: rgba(245, 240, 232, 0.5); }
+body.page-dark .project-statement {
+  color: rgba(245, 240, 232, 0.8);
+  border-top-color: rgba(245, 240, 232, 0.15);
+}
+body.page-dark .back-link { color: rgba(245, 240, 232, 0.4); }
+body.page-dark .back-link:hover { color: var(--warm); opacity: 1; }
+
+/* Video embed — responsive 16:9 container */
+.video-embed {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+.video-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Placeholder slots — for images/video not yet added */
+.placeholder-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(245, 240, 232, 0.04);
+  border: 1px dashed rgba(245, 240, 232, 0.18);
+  font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.25);
+}
+.placeholder-slot.video { aspect-ratio: 16/9; margin-bottom: 3rem; }
+.placeholder-slot.still { aspect-ratio: 3/2; }
 
 /* Navigation */
 nav {
@@ -55,16 +178,14 @@ nav {
 }
 
 .nav-home {
-  font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--mid);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
   text-decoration: none;
 }
 
-.nav-home:hover { color: var(--ink); }
+.nav-home:hover { color: var(--accent); }
 
 .nav-links {
   display: flex;
@@ -73,7 +194,8 @@ nav {
 
 .nav-links a {
   font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 0.8rem;
+  font-size: 1rem;
+  font-weight: 400;
   letter-spacing: 0.06em;
   color: var(--ink);
   text-decoration: none;
@@ -87,25 +209,23 @@ nav {
   max-width: 640px;
   margin: 0 auto;
   padding: 5rem 2rem 2rem;
+  text-align: left;
 }
 
 .home-wrap h1 {
-  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-size: 1rem;
   font-weight: normal;
-  line-height: 1.25;
-  margin-bottom: 1.5rem;
-}
-
-.home-wrap h1 em {
-  font-style: italic;
-  color: var(--accent);
+  line-height: 1.75;
+  color: #3d3730;
+  margin-bottom: 0.75rem;
 }
 
 .home-intro {
-  font-size: 1.05rem;
+  font-size: 1rem;
+  font-weight: 300;
   color: #3d3730;
+  line-height: 1.75;
   margin-bottom: 4rem;
-  max-width: 560px;
 }
 
 .home-section-label {
@@ -214,8 +334,9 @@ nav {
 .back-link:hover { color: var(--accent); }
 
 .project-title {
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: clamp(1.8rem, 4vw, 2.6rem);
-  font-weight: normal;
+  font-weight: 700;
   line-height: 1.2;
   margin-bottom: 0.4rem;
 }
@@ -233,6 +354,7 @@ nav {
 .project-statement {
   max-width: 640px;
   font-size: 1rem;
+  font-weight: 300;
   line-height: 1.75;
   color: #3d3730;
   border-top: 1px solid var(--line);
@@ -327,8 +449,9 @@ nav {
 }
 
 .page-title {
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: clamp(1.6rem, 4vw, 2.2rem);
-  font-weight: normal;
+  font-weight: 700;
   margin-bottom: 2.5rem;
 }
 
@@ -345,6 +468,7 @@ nav {
 .text-wrap p {
   color: #3d3730;
   font-size: 1rem;
+  font-weight: 300;
   line-height: 1.75;
 }
 
@@ -354,6 +478,7 @@ nav {
   list-style: none;
   color: #3d3730;
   font-size: 1rem;
+  font-weight: 300;
   line-height: 1.75;
 }
 
@@ -403,9 +528,10 @@ footer a:hover { color: var(--accent); }
 
 .lb-img {
   max-width: 100%;
-  max-height: 80vh;
+  max-height: 70vh;
   object-fit: contain;
   display: block;
+  flex-shrink: 1;
 }
 
 .lb-caption {
