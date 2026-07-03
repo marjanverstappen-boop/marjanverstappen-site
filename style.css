@@ -487,6 +487,77 @@ nav {
 .text-wrap a { color: var(--accent); text-decoration: none; }
 .text-wrap a:hover { text-decoration: underline; }
 
+/* Collaborators page */
+.collaborator-block {
+  padding-top: 3rem;
+  border-top: 1px solid var(--line);
+  margin-top: 3rem;
+}
+
+.collaborator-block:first-of-type {
+  padding-top: 0;
+  border-top: none;
+  margin-top: 0;
+}
+
+.collaborator-logo {
+  max-height: 168px;
+  max-width: 660px;
+  width: auto;
+  display: block;
+  margin: 0 auto 1.5rem;
+}
+
+.collaborator-logo.logo-lg {
+  max-height: 336px;
+  max-width: 1320px;
+}
+
+.collaborator-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.sub-label {
+  font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 1.75rem 0 0.4rem;
+}
+
+.collaborator-photo {
+  width: 100%;
+  display: block;
+  margin-bottom: 1.75rem;
+}
+
+.photo-caption {
+  font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.75rem;
+  color: var(--mid);
+  line-height: 1.5;
+  margin-top: -1.15rem;
+  margin-bottom: 1.75rem;
+}
+
+.collaborators-wrap {
+  max-width: 1000px;
+  padding-left: 0.45rem;
+  padding-right: 0.45rem;
+}
+
+.closing-note {
+  padding-top: 3rem;
+  border-top: 1px solid var(--line);
+  margin-top: 3rem;
+  font-style: italic;
+  color: var(--mid);
+}
+
 /* Footer */
 footer {
   border-top: 1px solid var(--line);
@@ -598,6 +669,7 @@ footer a:hover { color: var(--accent); }
   .image-grid { grid-template-columns: 1fr; }
   .project-wrap { padding: 2rem 1.25rem 4rem; }
   .text-wrap { padding: 2.5rem 1.25rem 4rem; }
+  .collaborators-wrap { padding-left: 0.55rem; padding-right: 0.55rem; }
   .home-wrap { padding: 3rem 1.25rem 2rem; }
   footer { padding: 1rem 1.25rem; }
 }
